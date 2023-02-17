@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Members</title>
+    {{!--
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    --}}
+    {{!-- <link rel="stylesheet" href="css/allmembers.css"> --}}
+    
+</head>
+
+<body><script type="text/javascript" src="pending.js"></script>
+    <main>
+        <h1 class="title">All Members</h1>
+        <div class="list">
+            <% result.forEach((item)=>{%>
+            {{!-- {{#if check}} --}}
+            <div class="line">
+                <div class="user">
+                    <div class="profile">
+                        <p id="year"><%=item.rollno%></p>
+                    </div>
+                    <div class="details">
+                        <h1 class="name"><%=item.name%></h1>
+                    </div>
+                </div>
+                <div class="date">
+                    <span>
+                        <p id="year"><%=item.admission.getDate()%>-<%=item.admission.getMonth()+1%>-<%=item.admission.getFullYear()%></p>
+                        <p id="year"><%=item.mobile%></p>
+                    </span>
+                </div>
+                <div class="update">
+                    <a href="/updateData/<%=item._id%>" class="btn">Update</a>
+                </div>
+                <div class="Message">
+                    <a href="/messageUser/<%=item._id%>" class="btn">Message</a>
+                </div>
+                <div class="Delete">
+                    <a href="/deleteData/<%=item._id%>" class="btn">Delete</a>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </main>
+    <script type="text/javascript">
+    var yc = Date.now().getYear(), mc = Date.now().getMonth(), dc = Date.now().getDate();
+var year = result.admission.getYear();
+console.log(year);
+document.getElementById("year").innerHTML = "sdfg";
+    </script>
+</body>
+
+</html> 

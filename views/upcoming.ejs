@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Dues</title>
+    {{!--
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    --}}
+    {{!-- <link rel="stylesheet" href="css/allmembers.css"> --}}
+    
+</head>
+
+<body><script type="text/javascript" src="pending.js"></script>
+    <main>
+        <h1 class="title">Upcoming Dues</h1>
+        <div class="list">
+            <% 
+
+            function checkUpcoming12month(date){
+                const today = new Date();
+                today.setFullYear(today.getFullYear() - 1);
+                date.setDate(date.getDate() - 5);
+                var du = date.getDate() , mu = date.getMonth() , yu = date.getFullYear();
+                date.setDate(date.getDate() + 5);
+                var dc = today.getDate() , mc = today.getMonth() , yc = today.getFullYear();
+                var day = date.getDate() , month = date.getMonth() , year = date.getFullYear();
+                console.log(du + '-' + mu + '-' + yu);
+                console.log(dc + '-' + mc + '-' + yc);
+                console.log(day + '-' + month + '-' + year);
+                if(yc < yu){
+                    return false;
+                }
+                else{
+                    if(mc < mu){
+                        return false;
+                    }
+                    else{
+                        if(dc < du){
+                            return false;
+                        }
+                    }
+                }
+                if(year < yc){
+                    return false;
+                }
+                else{
+                    if(month < mc){
+                        return false;
+                    }
+                    else{
+                        if(day < dc){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+            
+            function checkUpcoming1month(date){
+                const today = new Date();
+                today.setMonth(today.getMonth() - 1);
+                date.setDate(date.getDate() - 5);
+                var du = date.getDate() , mu = date.getMonth() , yu = date.getFullYear();
+                date.setDate(date.getDate() + 5);
+                var dc = today.getDate() , mc = today.getMonth() , yc = today.getFullYear();
+                var day = date.getDate() , month = date.getMonth() , year = date.getFullYear();
+                console.log(du + '-' + mu + '-' + yu);
+                console.log(dc + '-' + mc + '-' + yc);
+                console.log(day + '-' + month + '-' + year);
+                if(yc < yu){
+                    return false;
+                }
+                else{
+                    if(mc < mu){
+                        return false;
+                    }
+                    else{
+                        if(dc < du){
+                            return false;
+                        }
+                    }
+                }
+                if(year < yc){
+                    return false;
+                }
+                else{
+                    if(month < mc){
+                        return false;
+                    }
+                    else{
+                        if(day < dc){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            function checkUpcoming3month(date){
+                const today = new Date();
+                today.setMonth(today.getMonth() - 3);
+                date.setDate(date.getDate() - 5);
+                var du = date.getDate() , mu = date.getMonth() , yu = date.getFullYear();
+                date.setDate(date.getDate() + 5);
+                var dc = today.getDate() , mc = today.getMonth() , yc = today.getFullYear();
+                var day = date.getDate() , month = date.getMonth() , year = date.getFullYear();
+                console.log(du + '-' + mu + '-' + yu);
+                console.log(dc + '-' + mc + '-' + yc);
+                console.log(day + '-' + month + '-' + year);
+                if(yc < yu){
+                    return false;
+                }
+                else{
+                    if(mc < mu){
+                        return false;
+                    }
+                    else{
+                        if(dc < du){
+                            return false;
+                        }
+                    }
+                }
+                if(year < yc){
+                    return false;
+                }
+                else{
+                    if(month < mc){
+                        return false;
+                    }
+                    else{
+                        if(day < dc){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            function checkUpcoming6month(date){
+                const today = new Date();
+                today.setMonth(today.getMonth() -6);
+                date.setDate(date.getDate() - 5);
+                var du = date.getDate() , mu = date.getMonth() , yu = date.getFullYear();
+                date.setDate(date.getDate() + 5);
+                var dc = today.getDate() , mc = today.getMonth() , yc = today.getFullYear();
+                var day = date.getDate() , month = date.getMonth() , year = date.getFullYear();
+                console.log(du + '-' + mu + '-' + yu);
+                console.log(dc + '-' + mc + '-' + yc);
+                console.log(day + '-' + month + '-' + year);
+                if(yc < yu){
+                    return false;
+                }
+                else{
+                    if(mc < mu){
+                        return false;
+                    }
+                    else{
+                        if(dc < du){
+                            return false;
+                        }
+                    }
+                }
+                if(year < yc){
+                    return false;
+                }
+                else{
+                    if(month < mc){
+                        return false;
+                    }
+                    else{
+                        if(day < dc){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            
+
+            function checkPackage(package, date){
+
+                if(package == '1 month'){
+                    return checkUpcoming1month(date);
+                }
+                else if(package == '3 months'){
+                    return checkUpcoming3month(date);
+                }
+                else if(package == '6 months'){
+                    return checkUpcoming6month(date);
+                }
+                else{
+                    return checkUpcoming12month(date);
+                }
+            }
+
+            %>
+            <% result.forEach((item)=>{%>
+            <% if(checkPackage(item.package, item.admission)){%>
+            <div class="line">
+                <div class="user">
+                    <div class="profile">
+                        <p id="year"><%=item.rollno%></p>
+                    </div>
+                    <div class="details">
+                        <h1 class="name"><%=item.name%></h1>
+                    </div>
+                </div>
+                <div class="date">
+                    <span></span>
+                    <p id="year"><%=item.admission.getDate()%>-<%=item.admission.getMonth()+1%>-<%=item.admission.getFullYear()%></p>
+                    <p id="year"><%=item.mobile%></p>
+                </div>
+                <div class="update">
+                    <a href="/updateData/<%=item._id%>" class="btn">Update</a>
+                </div>
+                <div class="Message">
+                    <a href="/upcomingMessageUser/<%=item._id%>" class="btn">Message</a>
+                </div>
+                <div class="Delete">
+                    <a href="/deleteData/<%=item._id%>" class="btn">Delete</a>
+                </div>
+            </div>
+            <% }%>
+            <%})%>
+        </div>
+    </main>
+    <script type="text/javascript">
+    var yc = Date.now().getYear(), mc = Date.now().getMonth(), dc = Date.now().getDate();
+var year = result.admission.getYear();
+console.log(year);
+document.getElementById("year").innerHTML = "sdfg";
+    </script>
+</body>
+
+</html> 
